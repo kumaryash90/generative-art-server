@@ -6,13 +6,13 @@ require('dotenv').config();
 
 const provider_rinkeby = new ethers.providers.JsonRpcProvider(process.env.ALCHEMY_RINKEBY);
 
-const contract = new ethers.Contract("0x50D0095B43b3Ce4EcAb52c37F0cb6bC3A42F4E90", artifact.abi, provider_rinkeby);
+const contract = new ethers.Contract("0x1E3C4c2ffD663a7e26cF4c9478F12556b57Fd43C", artifact.abi, provider_rinkeby);
 
 const getScript = async (tokenId) => {
     const scriptStr = await contract.script();
     const hash = await contract.tokenToHash(parseInt(tokenId));
     const x = `const tokenData = {
-        hash: "0x${hash}",
+        hash: "${hash}",
         tokenId: ${tokenId}
     }
     `;
